@@ -169,4 +169,4 @@ client.on('message' , async (message) => {
 
 
 
-client.login('NDYzODM3MjAxMDkyOTY4NDQ4.DjaGog.eZeJSMjTMWcTuGABRIhlrTJJXYs');
+client.login(process.env.BOT_TOKEN);
