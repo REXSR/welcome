@@ -67,8 +67,6 @@
     "array-sort": "^1.0.0",    
 
 
-  }
-
   "engines": {
 
     "node": "8.4.0"
