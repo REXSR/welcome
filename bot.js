@@ -1,13 +1,8 @@
 const Discord = require('discord.js');
-
 const bot = new Discord.Client();
-
 const client = new Discord.Client();
-
 const prefix = '+'
-
 client.on('ready', () => {
-
   console.log('╔[════════════════════════════════════]╗');
 
   console.log('')
@@ -35,23 +30,14 @@ client.on('ready', () => {
   console.log('╚[════════════════════════════════════]╝')
 
 });
-
 client.on('ready', () => {
-
      client.user.setActivity("By:REX SRB",{type: 'WATCHING'})
-
 });
 
 client.on('message', message => {
-
-	var prefix = "+";
-
   if (!message.content.startsWith(prefix)) return;
-
-  const verifed = ["389090790984515594"];
-
+  const verifed = ["283355378811666435"];
 if (message.content.startsWith(prefix + 'owner')) {
-
 if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
 
 } else {
@@ -65,21 +51,14 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
 });
 
 client.on("message", (message) => {
-
-    if (message.content.startsWith("+ban ")) {
-
+    if (message.content.startsWith("+ban ");
       if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('⚠ ماعندك الصلاحيات');
-
         var member= message.mentions.members.first();
-
         member.ban().then((member) => {
-
             message.channel.send(member.displayName + " لقد تم طرده بنجاح 👋 ");
-
         }).catch(() => {
-
             message.channel.send("❌ هناك خطاء حاول مره أخرى❌ ");
-
+		
         });
 
     }
@@ -87,7 +66,6 @@ client.on("message", (message) => {
 });
 
 client.on('message', msg => {
-
   if (msg.author.bot) return;
 
   if (!msg.content.startsWith(prefix)) return;
@@ -139,16 +117,11 @@ const arraySort = require('array-sort');
          
 
 client.on('message' , async (message) => {
-
     if(message.content.startsWith(x5bz + "inv")) {
            if(!message.channel.guild) return
-
   var invites = await message.guild.fetchInvites();
-
     invites = invites.array();
-
     arraySort(invites, 'uses', { reverse: true });
-
     let possibleInvites = [['User Invited', 'Uses']];
     invites.forEach(i => {
       possibleInvites.push([i.inviter.username , i.uses]); 
@@ -158,7 +131,6 @@ client.on('message' , async (message) => {
     .setTitle("Server Invites")
     .addField('Top Invites:' , `\`\`\`${table.table(possibleInvites)}\`\`\``)
     .setThumbnail(message.author.avatarURL)
-
     message.channel.send(embed)
     }
 });
