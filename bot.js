@@ -38,7 +38,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
 
-     client.user.setActivity("+help",{type: 'WATCHING'})
+     client.user.setActivity("By:REX SRB",{type: 'WATCHING'})
 
 });
 
