@@ -43,7 +43,7 @@ client.on('ready', () => {
 });
 
 client.on("guildMemberAdd", function(member) {
-    const wc = member.guild.channels.find("name", "log")
+    const wc = member.guild.channels.find("name", "ｃｈａｔ")
         const embed = new Discord.RichEmbed()
         .setColor('B90C0C')
         .setAuthor(member.user.tag, member.user.avatarURL)
