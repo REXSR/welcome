@@ -64,7 +64,7 @@ const fs = require("fs") // npm i fs
             if(!sw[message.guild.id]) sw[message.guild.id] = {
                 cha: "wlc",
                 msz: "WELCOME TO SERVER",
-                styler: "text"
+                styler: "wlc"
             };
  
             if(!sets) {
