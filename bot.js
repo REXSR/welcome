@@ -38,11 +38,9 @@ client.on('ready', () => {
 
 client.on('ready', () => {
 
-     client.user.setActivity("SRB BEST",{type: 'WATCHING'})
+     client.user.setActivity("SRB BEST",{type: 'streming'})
 
 });
-
-
 
 let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
  
@@ -59,12 +57,12 @@ const fs = require("fs") // npm i fs
         let r = message.content.split(" ").slice(4).join(" ")
  
  
-        if(message.content.startsWith(prefix + "wlc")) {
+        if(message.content.startsWith(prefix + "setWlc")) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
             if(!sw[message.guild.id]) sw[message.guild.id] = {
-                cha: "wlc",
-                msz: "WELCOME TO SERVER",
-                styler: "wlc"
+                cha: "welcome",
+                msz: "Welcome To server",
+                styler: "text"
             };
  
             if(!sets) {
@@ -78,18 +76,18 @@ const fs = require("fs") // npm i fs
                 message.channel.send(`**Usage: ${prefix}setWlc style <text, imgae, embed>**`)
             }
  
-            if(message.content === prefix + 'wlc') {
+            if(message.content === prefix + 'setWlc style image') {
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
                 sw[message.guild.id].styler = 'image'
                 message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)
             }
  
-            if(message.content === prefix + 'wlc') {
+            if(message.content === prefix + 'setWlc style embed') {
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
                  sw[message.guild.id].styler = 'embed'
                 message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)            }
  
-            if(message.content === prefix + 'wlc') {
+            if(message.content === prefix + 'setWlc style text') {
                 if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
                  sw[message.guild.id].styler = 'text'
                 message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)
@@ -97,7 +95,7 @@ const fs = require("fs") // npm i fs
  
         }
  
-        if(message.content.startsWith(prefix + "wlc")) {
+        if(message.content.startsWith(prefix + "setWlc msg")) {
             if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**You need `Manage Messages` permission**")
             if(!msz) {
                 message.channel.send("Usage: <setWlc msg <message>")
@@ -107,7 +105,7 @@ const fs = require("fs") // npm i fs
             }
         }
  
-        if(message.content.startsWith(prefix + "wlc")) {
+        if(message.content.startsWith(prefix + "setWlc channel")) {
             if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
             if(!ch) {
                 message.channel.send("Usage: <setWlc channel <channel name>")
@@ -218,6 +216,18 @@ ctx.font = '35px Aeland';
     }
  
 })
+
+
+    
+ 
+ 
+ 
+
+
+ 
+    
+ 
+
 
 
 
