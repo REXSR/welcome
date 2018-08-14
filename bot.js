@@ -67,7 +67,7 @@ client.on('guildMemberAdd', member => {
 
 
 
-const w = ['./img/w1.png'];
+const w = ['https://cdn.discordapp.com/attachments/471700655484960779/478716803464560650/w1.png'];
 
          let Image = Canvas.Image,
             canvas = new Canvas(400, 200),
