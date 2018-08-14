@@ -49,7 +49,7 @@ const jimp = require('jimp');
 const Canvas = require('canvas');
 
 client.on('guildMemberAdd', member => {
-     const welcomer =  member.guild.channels.find('name', 'welcome');
+     const welcomer =  member.guild.channels.find('name', 'wlc');
     if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
@@ -177,7 +177,7 @@ client.on('guildMemberRemove', member => {
 
     .setColor('RED')
 
-    .setFooter(`SRB Bot`, '')
+    .setFooter(`welcome Bot`, '')
 
 var channel =member.guild.channels.find('name', 'wlc')
 
