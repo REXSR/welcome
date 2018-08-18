@@ -137,7 +137,24 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   },Otime)
   });
 
-
+let log = JSON.parse(fs.readFileSync("./logs.json", "utf8"));
+var defaultlogchannel = 'logs';
+var logs;
+if(log[message.guild.id]){
+var logs = log[message.guild.id].logs;
+}else{
+var logs = 'logs';
+}
+if(message.content.startsWith(prefix + "setlog")){
+if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")){return message.reply("x Vous n'avez pas les permissions dans ce serveur").catch(console.error);
+}else{
+let args = message.content.split(' ').slice(1);
+if(!args) return message.channel.send('x Merci de specifier un channel')
+log[message.guild.id] = {"logs": args.join(" ")};
+message.channel.send("Mon channel des logs d'annonce est "+ args.join(" ") + "");
+fs.writeFile("./logs.json", JSON.stringify(log), (err) => {if (err) console.error(err);});
+}
+}
 
 
 
