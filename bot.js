@@ -137,7 +137,7 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   },Otime)
   });
 
-let log = JSON.parse(fs.readFileSync("./logs.json", "utf8");
+let log = JSONparse(fs.readFileSync("./logs.json", "utf8");
 var defaultlogchannel = 'logs';
 var logs;
 if(log[message.guild.id]){
