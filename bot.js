@@ -38,7 +38,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
 
-     client.user.setActivity("system SRB ",{type: 'Streming'})
+     client.user.setActivity("system SRB",{type: 'streming'})
 
 });
 
@@ -137,7 +137,7 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   },Otime)
   });
 
-let log = JSON.parse(fs.readFileSync("./logs.json", "utf8"));
+let log = JSON.parse(fs.readFileSync("./logs.json", "utf8");
 var defaultlogchannel = 'logs';
 var logs;
 if(log[message.guild.id]){
