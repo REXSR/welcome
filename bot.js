@@ -570,7 +570,6 @@ client.on('message', message => {
 });
 
 
-const Discord = require('discord.js');
 const client = new Discord.Client({ fetchAllMembers: true });
 const fs = require("fs");
 const userData = JSON.parse(fs.readFileSync('./userData.json', 'utf8'));
