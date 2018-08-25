@@ -140,59 +140,10 @@ channel.guild.owner.send(`<@!${channelremover.id}>
 
 
 
-client.on('message', message => {
+   
+        
 
-if (message.content.startsWith('معلومات الدعوات')) {
 
-let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ; 
-
-  let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
-
-  let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
-
-  message.guild.fetchInvites().then(invs => {
-
-    let member = client.guilds.get(message.guild.id).members.get(oi);
-
-    let personalInvites = invs.filter(i => i.inviter.id === oi);
-
-    let urll = invs.filter(i => i.inviter.id === oi);
-
-    let link = urll.reduce((p , v) => v.url +` , Total de membros recrutados no convite: ${v.uses}.\n`+ p, `\nServidor: ${message.guild.name} \n `);
-
-    let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-
-   let exec = personalInvites.reduce((p, v) => v.inviter);
-
- let possibleInvites = [['Total de membros recrutados:']];
-
-possibleInvites.push([inviteCount, exec]);
-
-        let user = message.mentions.users.first() || message.author;
-
-        let mem = message.guild.member(user);
-
-        let millisJoined = new Date().getTime() - mem.joinedAt.getTime();
-
-        let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
-
-const alpha = new Discord.RichEmbed()
-
-.setAuthor(img)
-
-.addField('🏆 Invite Infos',  `\n\n► لقد قمت بدعوة \`\`${Number(inviteCount)}\`\` عضو.\n\n► لقد انضممت لسرفر مند\`${daysJoined.toFixed(0)}\`يوم .\n\n► لقد انضممت بهذه الدعوة\`${exec}\``,true)
-
-.setThumbnail(imagemm)
-
-.setColor(0x4959e9);
-
-message.channel.send(alpha);
-
-});
-
-};
-
-  });
 
 
 
@@ -336,7 +287,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
   let rebel2 = newM.serverMute;
   let codes1 = oldM.serverDeaf;
   let codes2 = newM.serverDeaf;
-  let ch = oldM.guild.channels.find('name', 'log')
+  let ch = oldM.guild.channels.find('name', 'gftj')
   if(!ch) return;//ReBeL & Codes
     oldM.guild.fetchAuditLogs()
     .then(logs => {
@@ -394,34 +345,8 @@ client.on('voiceStateUpdate', (oldM, newM) => {
 
   
 
-  client.on('message', message => {
-    if (message.content.startsWith(prefix + "هويتي")) {
-var args = message.content.split(" ").slice(1);
-let user = message.mentions.users.first();
-var men = message.mentions.users.first();
- var heg;
- if(men) {
-     heg = men
- } else {
-     heg = message.author
- }
-var mentionned = message.mentions.members.first();
-  var h;
- if(mentionned) {
-     h = mentionned
- } else {
-     h = message.member
- }
-      var id = new  Discord.RichEmbed()
-.setColor("RANDOM")
-.addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
-.addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
-.addField(": النك نيم",`${h.nickname}`, true) .addField(": #",heg.discriminator, true)
-.addField(`: البلينق`,`${h.presence.game && h.presence.game.name || '-'}`,true) .addField(': الحالة',`${h.presence.status}`,true)
-.addField(`: الرتب`, `${message.guild.members.get(h.id).roles.map(r => `\`${r.name}\``).slice(1).join('\n') || 'لايوجد رتب'}`,true)                                                    
-.setThumbnail(heg.avatarURL);
-message.channel.send(id)
-}       });
+  
+
 
 
 
@@ -529,7 +454,7 @@ client.on('message', message => {
 
         try {
 
-          let log = guild.channels.find('name', 'log');
+          let log = guild.channels.find('name', 'klkh');
 
           if (!log) return;
 
