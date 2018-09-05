@@ -38,7 +38,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
 
-     client.user.setActivity('Great. Pro',{type: 'streming'})
+     client.user.setActivity('KAN BEST',{type: 'streming'})
 
 });
 
@@ -186,7 +186,7 @@ if(cmd === `${prefix}level`) {
 if(!xp[message.author.id]){
     xp[message.author.id] = {
       xp: 0,
-      level: 1
+      level: 0,
    };
  }
    let curxp = xp[message.author.id].xp;
@@ -208,7 +208,7 @@ if(!xp[message.author.id]){
 
 client.on('message',function(message) {
   if(!message.channel.guild) return;
-    if (message.content === prefix + "دسكريم") {
+    if (message.content === prefix + "dis") {
 let messageArray = message.content.split(" ");
 let args = messageArray.slice(1);
 
@@ -241,45 +241,10 @@ ${users.join('\n')}
 
 
 
-client.on('message', function(msg) {
-  if(msg.content.startsWith ('معلومات السيرفر')) {
-    if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
-    let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setThumbnail(msg.guild.iconURL)
-    .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ ${msg.guild.name} ]**`,true)
-    .addField(':earth_africa: ** موقع السيرفر :**',`**[ ${msg.guild.region} ]**`,true)
-    .addField(':military_medal:** الرتب :**',`**[ ${msg.guild.roles.size} ]**`,true)
-    .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ ${msg.guild.memberCount} ]**`,true)
-    .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ ${msg.guild.members.filter(m=>m.presence.status == 'online').size} ]**`,true)
-    .addField(':pencil:** الرومات الكتابية :**',`**[ ${msg.guild.channels.filter(m => m.type === 'text').size} ]**`,true)
-    .addField(':loud_sound:** رومات الصوت :**',`**[ ${msg.guild.channels.filter(m => m.type === 'voice').size} ]**`,true)
-    .addField(':crown:** صاحب السيرفر :**',`**[ ${msg.guild.owner} ]**`,true)
-    .addField(':id:** ايدي السيرفر :**',`**[ ${msg.guild.id} ]**`,true)
-    .addField(':date:** تم عمل السيرفر في : **',msg.guild.createdAt.toLocaleString())
-    msg.channel.send({embed:embed});
-  }
-});
 
 
-client.on("message", msg => {
-  if(msg.content === '#' + "معلوماتي") {
-      const embed = new Discord.RichEmbed();
-  embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
-          .addField("🆔| الاي دي :", `${msg.author.id}`, true)
-          .setColor("RANDOM")
-          .setFooter(msg.author.username , msg.author.avatarURL)
-          .setThumbnail(`${msg.author.avatarURL}`)
-          .setTimestamp()
-          .setURL(`${msg.author.avatarURL}`)
-          .addField('📛| الحالة :', `${msg.author.presence.status.toUpperCase()}`, true)
-          .addField('🎲| بلاينج :', `${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name}`, true)
-          .addField('🏅| الرتب : ', `${msg.member.roles.filter(r => r.name).size}`, true)
-          .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true)
-          .addField('🤖| هل هو بوت ؟', `${msg.author.bot.toString().toUpperCase()}`, true);
-      msg.channel.send({embed: embed})
-  }
-});
+
+
 
 
 client.on('voiceStateUpdate', (oldM, newM) => {
@@ -287,7 +252,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
   let rebel2 = newM.serverMute;
   let codes1 = oldM.serverDeaf;
   let codes2 = newM.serverDeaf;
-  let ch = oldM.guild.channels.find('name', 'gftj')
+  let ch = oldM.guild.channels.find('name', 'log')
   if(!ch) return;//ReBeL & Codes
     oldM.guild.fetchAuditLogs()
     .then(logs => {
@@ -426,7 +391,7 @@ client.on('message', message => {
   .addField("User:",  `[ + ${user.tag} + ]`)
   .addField("By:", `[  + ${message.author.tag} +  ]`)
   .addField("Reason:", `[ + ${reason} +  ]`)
-  client.channels.get("413087743799984131").send({embed : banembed})
+  client.channels.get("486877835839930368").send({embed : banembed})
 }
 });
 
@@ -454,7 +419,7 @@ client.on('message', message => {
 
         try {
 
-          let log = guild.channels.find('name', 'klkh');
+          let log = guild.channels.find('name', 'log');
 
           if (!log) return;
 
@@ -495,10 +460,82 @@ client.on('message', message => {
 });
 
 
+client.on('message', message => {
+          
+
+           if (message.content.startsWith(prefix + "id")) {
+           if (message.channel.id !== "486541221603442688") return;
+            
+            if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
+
+                message.guild.fetchInvites().then(invs => {
+      let member = client.guilds.get(message.guild.id).members.get(message.author.id);
+      let personalInvites = invs.filter(i => i.inviter.id === message.author.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+      var moment = require('moment');
+      var args = message.content.split(" ").slice(1);
+let user = message.mentions.users.first();
+var men = message.mentions.users.first();
+ var heg;
+ if(men) {
+     heg = men
+ } else {
+     heg = message.author
+ }
+var mentionned = message.mentions.members.first();
+  var h;
+ if(mentionned) {
+     h = mentionned
+ } else {
+     h = message.member
+ }
+        moment.locale('ar-TN');
+      var id = new  Discord.RichEmbed()
+       
+    .setColor("#0a0909")
+ .setThumbnail(message.author.avatarURL)
+.addField(': تاريخ دخولك للديسكورد',` \`${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} \`**\n ${moment(heg.createdTimestamp).fromNow()}**` ,true) 
+.addField(': تاريخ دخولك لسيرفرنا', `\`${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')}  \` **\n ${moment(h.joinedAt).fromNow()} **`, true)
+.addField(` :لقد قمت بدعوة `, ` ${inviteCount} `)
 
 
+.setFooter(message.author.username, message.author.avatarURL)  
+    message.channel.sendEmbed(id);
+})
+}
+    
+
+         
+     });
 
 
+client.on('message', message => {
+
+    if (!message.guild) return; 
+
+    if (message.content.startsWith("رابط")) {
+
+        message.channel.createInvite({
+
+        thing: true,
+
+        maxUses: 1,
+
+        maxAge: 86400
+
+    }).then(invite =>
+
+      message.author.sendMessage(invite.url)
+
+    )
+
+  message.channel.send(`** تم أرسال الرابط برسالة خاصة **`)
+
+      message.author.send(`**هذا الرابط لشخص واحد و لمدة 24 ساعة **`)
+
+    }
+
+});
 
 
 
