@@ -1120,14 +1120,6 @@ const w = ['./m.png'];
 });
 
  
-  warnBuffer: 7,  //alpha codes 
-  interval: 6,  //alpha codes
-  warningMessage: "**سيتم طردك إن لم توقف سبام**",  //alpha codes
-  banMessage: "تم الطرد بسبب السبام",  //alpha codes
-  maxDuplicatesWarning: 7, //alpha codes
-  maxDuplicatesBan: 10  //alpha codes
-});
-bot.login(process.env.BOT_SPAM);
 
 client.on("message", async message => {
   
