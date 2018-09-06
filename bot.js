@@ -241,7 +241,7 @@ ${users.join('\n')}
 
 
 
-
+ 
 
 
 
@@ -721,7 +721,6 @@ client.on('guildMemberRemove', member => {
 
 
 
-//==========================================MASSGE
 client.on('messageDelete', message => {
     if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
     const channel = message.guild.channels.find('name', 'log');
@@ -768,7 +767,6 @@ client.on('messageDelete', message => {
 
 
 
-//=======================MUTE
 
 
 
@@ -1120,33 +1118,15 @@ const w = ['./m.png'];
 
  
 
-client.on("message", async message => {
-  
-  if(!message.member.hasPermission("ADMINISTRATOR")) {
-    if(/(?:https?:\/)?discord(?:app.com\/invite|.gg)/gi.test(message.content)) {
-        message.delete();
-        let inviteEmbed = new Discord.RichEmbed()
-  
-        .setDescription("__**Auto Suppression**__")
-        .addField("> Envoyé par :", `<@${message.author.id}> avec l'ID ${message.author.id}`)
-        .addField("> Suppression dans :", message.channel)
-        .addField(`> Raison :`, `Envoie une invitation discord : ${message.content}`)
-        .setColor(violet);
-  
-        let incidentchannel = message.guild.channels.find(`name`, "log");
-        if(!incidentchannel) return message.channel.send("⛔ Je n'est pas trouvé le channel 'logs' !");
-        return incidentchannel.send(inviteEmbed);
-    }
-  }
-  });
+
 
     
  
 
  
  
-})
-})
+
+
  
   
 
