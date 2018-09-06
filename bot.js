@@ -1119,9 +1119,7 @@ const w = ['./m.png'];
 })
 });
 
-	var anti.spam = require("discord-anti-spam");
  
-anti_spam(bot, {
   warnBuffer: 7,  //alpha codes 
   maxBuffer: 8,  //alpha codes
   interval: 1000,  //alpha codes
