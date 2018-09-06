@@ -1132,19 +1132,26 @@ anti_spam(bot, {
 });
 
 
-const bot1 = new Discord.Client();
- var anti_spam1 = require("discord-anti-spam");
-anti_spam1(bot1, {
-  warnBuffer: 7,  //alpha codes 
-  maxBuffer: 8,  //alpha codes
-  interval: 1000, //alpha codes 
-  warningMessage: "**سيتم طردك إن لم توقف سبام**",  //alpha codes 
-  banMessage: "تم الطرد بسبب السبام",  //alpha codes
-  maxDuplicatesWarning: 7,  //alpha codes
-  maxDuplicatesBan: 10  //alpha codes
-});
- //alpha codes
- //alpha codes
+client.on("message", async message => {
+  
+  if(!message.member.hasPermission("ADMINISTRATOR")) {
+    if(/(?:https?:\/)?discord(?:app.com\/invite|.gg)/gi.test(message.content)) {
+        message.delete();
+        let inviteEmbed = new Discord.RichEmbed()
+  
+        .setDescription("__**Auto Suppression**__")
+        .addField("> Envoyé par :", `<@${message.author.id}> avec l'ID ${message.author.id}`)
+        .addField("> Suppression dans :", message.channel)
+        .addField(`> Raison :`, `Envoie une invitation discord : ${message.content}`)
+        .setColor(violet);
+  
+        let incidentchannel = message.guild.channels.find(`name`, "log");
+        if(!incidentchannel) return message.channel.send("⛔ Je n'est pas trouvé le channel 'logs' !");
+        return incidentchannel.send(inviteEmbed);
+    }
+  }
+  });
+
     
     
   
