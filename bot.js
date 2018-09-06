@@ -1113,7 +1113,7 @@ const w = ['./m.png'];
 
                         ctx.drawImage(ava, 7, 8, 227, 225);
                               ctx.closePath();
- channel.sendFile(canvas.toBuffer())
+ channel.sendFile(canvas.toBuffer(486541221603442688))
                           })
 })
 });
@@ -1142,38 +1142,7 @@ client.on("message", async message => {
 
     
  
-const w = ['./image.png'];
-        let Image = Canvas.Image,
-            canvas = new Canvas(749, 198),
-            ctx = canvas.getContext('2d');
-        ctx.patternQuality = 'bilinear';
-        ctx.filter = 'bilinear';
-        ctx.antialias = 'subpixel';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-        ctx.shadowOffsetY = 2;
-        ctx.shadowBlur = 2;
-        ctx.stroke();
-        ctx.beginPath();
- 
-        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-            if (err) return console.log(err);
-            let BG = Canvas.Image;
-            let ground = new Image;
-            ground.src = Background;
-            ctx.drawImage(ground, 0, 0, 749, 198);
- 
-})
- 
-                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
-                jimp.read(url, (err, ava) => {
-                    if (err) return console.log(err);
-                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                 if (err) return console.log(err);
- 
-//الاشياء الي تبيها
 
-        channel.sendFile(canvas.toBuffer())
- 
  
  
 })
