@@ -1121,7 +1121,6 @@ const w = ['./m.png'];
 
  
   warnBuffer: 7,  //alpha codes 
-  maxBuffer: 8,  //alpha codes
   interval: 1000,  //alpha codes
   warningMessage: "**سيتم طردك إن لم توقف سبام**",  //alpha codes
   banMessage: "تم الطرد بسبب السبام",  //alpha codes
