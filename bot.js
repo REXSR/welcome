@@ -836,7 +836,6 @@ client.on('voiceStateUpdate', (oldM, newM) => {
 
 
 
-//==================================
 client.on("channelCreate",  cc => {
   const channel = cc.guild.channels.find("name", "log")
   if(channel) {
@@ -1022,7 +1021,7 @@ function forEachObject(obj, func) {
     Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
 }
 client.on('guildMemberAdd', member => {
-const channel = member.guild.channels.find("name","chat")
+const channel = member.guild.channels.find("name","486541221603442688")
 if (member.user.bot) return;
 var Canvas = require('canvas-prebuilt')
 var jimp = require('jimp')
