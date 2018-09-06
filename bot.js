@@ -1119,7 +1119,7 @@ const w = ['./m.png'];
 })
 });
 
-	var anti_spam = require("discord-anti-spam");
+	var anti.spam = require("discord-anti-spam");
  
 anti_spam(bot, {
   warnBuffer: 7,  //alpha codes 
