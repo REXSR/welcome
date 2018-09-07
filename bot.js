@@ -1103,7 +1103,7 @@ var defaultmodrole = 'membres';
 if(autorole[message.guild.id]){
 let autorole = autorole[message.guild.id].autoRole;
 }else{
-var autorole = 'membres';
+let autorole = 'membres';
 }
 if(message.content.startsWith(prefix + "setautorole")){
 if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")){return message.reply("**:x: Vous n'avez pas les permissions dans ce serveur**").catch(console.error);
