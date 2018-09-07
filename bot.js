@@ -1101,7 +1101,7 @@ client.on("guildMemberAdd", member => {
 let autorole = JSON.parse(fs.readFileSync("./autorole.json", "utf8"));
 var defaultmodrole = 'membres';
 if(autorole[message.guild.id]){
-var autorole = autorole[message.guild.id].autoRole;
+let autorole = autorole[message.guild.id].autoRole;
 }else{
 var autorole = 'membres';
 }
