@@ -1100,8 +1100,8 @@ client.on("guildMemberAdd", member => {
 
 let autorole = JSON.parse(fs.readFileSync("./autorole.json", "utf8"));
 var defaultmodrole = 'membres';
-if(autorole[message.guild.id]){
-let autorole = autorole[message.guild.id].autoRole;
+if(autorole(message.guild.id)){
+let autorole = autorole(message.guild.id).autoRole;
 }else{
 let autorole = 'membres';
 }
@@ -1110,7 +1110,7 @@ if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")){return 
 }else{
 let args = message.content.split(' ').slice(1);
 if(!args) return message.channel.send('**:x: Merci de specifier un role**')
-autorole[message.guild.id] = {"autorole": args.join(" ")};
+autorole(message.guild.id) = {"autorole": args.join(" ")};
 message.channel.send("Mon autorole est `"+ args.join(" ") + "`");
 fs.writeFile("./autorole.json", JSON.stringify(autorole), (err) => {if (err) console.error(err);});
 }
