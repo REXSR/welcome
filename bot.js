@@ -34,7 +34,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
 
-     client.user.setActivity('KAN BEST',{type: 'online'})
+     client.user.setActivity('KAN BEST',{type: 'streming'})
 
 });
 
@@ -1100,7 +1100,7 @@ client.on("guildMemberAdd", member => {
 
 
 
-let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
+let sw = JSON.parse(fs.readFileSync("./setWlc.json", "utf8"))
  
     client.on('message', message => {
 const Canvas = require("canvas") // npm i canvas
@@ -1238,7 +1238,7 @@ ctx.font = '35px Aeland';
                         ctx.fontSize = '40px';
                         ctx.fillStyle = "#FFFFFF";
                         ctx.textAlign = "center";
-                        ctx.fillText(" Welcome to " + member.guild.name , 440, 25);
+                        ctx.fillText(" Welcome to server kan " + member.guild.name , 440, 25);
  
                         //ur name
                         ctx.font = '40px Impact';
