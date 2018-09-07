@@ -797,17 +797,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
 
 
 
-client.on("channelCreate",  cc => {
-  const channel = cc.guild.channels.find("name", "log")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(cc.guild.name)
-  .setDescription(`***Channel Created Name : *** **${cc.name}** ⬅️`)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
+
 
    client.on("deleteChannel",  dc => {
   const channel = dc.guild.channels.find("name", "log")
@@ -986,7 +976,7 @@ client.on("message", function(message) {
    if(message.content.startsWith(prefix + "ban")) {
        if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("**# - You dont have enough permissions!**");
        if(!toBan) return message.reply("**# - Mention a user!**");
-       if(toBan.id === ("486877835839930368")) return message.reply("**# You cannot ban me!**");
+       if(toBan.id === ("486524296542421014")) return message.reply("**# You cannot ban me!**");
        if(toBan === message.member.guild.owner) return message.reply("**# You cannot ban the owner of the server!**");
        if(toBan.bannable) return message.reply("**# - I cannot ban someone with a higher role than me!**");
        if(!toReason) return message.reply("**# - Supply a reason!**")
