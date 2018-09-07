@@ -1,9 +1,5 @@
 const Discord = require('discord.js');
-
-const bot = new Discord.Client();
-
 const client = new Discord.Client();
-
 const prefix = '-'
 
 client.on('ready', () => {
@@ -1104,19 +1100,19 @@ client.on("guildMemberAdd", member => {
 
 let autorole = JSON.parse(fs.readFileSync("./autorole.json", "utf8"));
 var defaultmodrole = 'membres';
-var autoRole;
+var autorole;
 if(autorole[message.guild.id]){
-var autoRole = autorole[message.guild.id].autoRole;
+var autorole = autorole[message.guild.id].autoRole;
 }else{
-var autoRole = 'membres';
+var autorole = 'membres';
 }
 if(message.content.startsWith(prefix + "setautorole")){
 if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")){return message.reply("**:x: Vous n'avez pas les permissions dans ce serveur**").catch(console.error);
 }else{
 let args = message.content.split(' ').slice(1);
 if(!args) return message.channel.send('**:x: Merci de specifier un role**')
-autorole[message.guild.id] = {"autoRole": args.join(" ")};
-message.channel.send("Mon autoRole est `"+ args.join(" ") + "`");
+autorole[message.guild.id] = {"autorole": args.join(" ")};
+message.channel.send("Mon autorole est `"+ args.join(" ") + "`");
 fs.writeFile("./autorole.json", JSON.stringify(autorole), (err) => {if (err) console.error(err);});
 }
 }
