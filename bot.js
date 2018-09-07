@@ -675,22 +675,6 @@ client.on('roleCreate', role => {
 
 
  
-client.on('guildMemberRemove', member => {
-    if (!member || !member.id || !member.guild) return;
-    const guild = member.guild;
-   
-    const channel = member.guild.channels.find('name', 'log');
-    if (!channel) return;
-    let memberavatar = member.user.avatarURL
-    const fromNow = moment(member.joinedTimestamp).fromNow();
-   
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-       .setColor('#36393e')
-       .setDescription(` <@${member.user.id}> Left From The Server`)
-       .setTimestamp();
-     channel.send({embed:embed});
-});
 
 
 
