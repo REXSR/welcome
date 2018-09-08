@@ -135,7 +135,7 @@ channel.guild.owner.send(`<@!${channelremover.id}>
 
 
    
-        
+         
 
 
 
@@ -173,7 +173,7 @@ client.on('message', message => {
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(0);
-    let prefix = '#';
+    let prefix = '-';
     let xp = require("./xp.json");
     
 if(cmd === `${prefix}level`) {
@@ -602,7 +602,6 @@ client.on("guildBanAdd", (guild, member) => {
 
 
 
-//================================CRDR
       client.on("roleDelete", role => {
   client.setTimeout(() => {
     role.guild.fetchAuditLogs({
@@ -964,16 +963,6 @@ client.on("message", function(message) {
 });
  
 
- let logs = JSON.parse(fs.readFileSync(`./logs.json`, `utf8`));
-client.on('message', message => {
-const (!log[message.guild.id])log[message.guild.id] = {
-  onoff: 'Off',
-  channel: 'log' // BY ! - NourEldien.#8007
-  };
-  if(log[message.guild.id].onoff === 'Off') return;
-  let logchannel = message.guild.channels.find("name", 'log'[message.guild.id].channel)
- 
-});
  
   client.on("roleCreate", rc => {
     const channel = rc.guild.channels.find("name", 'log'[message.guild.id].channel)
@@ -986,7 +975,8 @@ const (!log[message.guild.id])log[message.guild.id] = {
     channel.sendEmbed(embed)
     }
     });
-    //By S Codes
+    
+
     client.on("roleDelete",  rd => {
     const channel = rd.guild.channels.find("name", 'log'[message.guild.id].channel)
     if(channel) {
@@ -1094,49 +1084,12 @@ const (!log[message.guild.id])log[message.guild.id] = {
    
   });
  
-client.on('message', message => {
+
  
- 
-if(!message.guild) return; // BY ! - NourEldien.#8007 // BY ! - NourEldien.#8007
-  if(!logs[message.guild.id]) logs[message.guild.id] = {
-  onoff: 'Off',
-  channel: 'log'
-  };
- 
-if(message.content.startsWith(prefix + 'setlog')) {
          
-  let perm = message.member.hasPermission(`ADMINISTRATOR`) || message.member.hasPermission(`MANAGE_SERVER`)
+
+
  
-  if(!perm) return message.reply(`You don't have \`Manage_roles / Administrator\` Permission`);
-  let args = message.content.split(" ").slice(1);
-  if(!args.join(" ")) return message.reply(`:gear: **| Correct usage**:
-\`=setlogs toggle / set <channel name>\``);
-  let state = args[0];
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
- // BY ! - NourEldien.#8007 // BY ! - NourEldien.#8007 // BY ! - NourEldien.#8007
-  if(!state.trim().toLowerCase() == 'toggle') return message.reply(`Please type a right state ON / OFF`) ;
-    if(state.trim().toLowerCase() == 'toggle') {
-     if(log[message.guild.id].onoff === 'Off') return [message.channel.send(`:white_check_mark: **| Logs for this server has been turned on.**`), logs[message.guild.id].onoff = 'On'];
-     if(log[message.guild.id].onoff === 'On') return [message.channel.send(`:white_check_mark: **| Logs for this server has been turned off.**`), logs[message.guild.id].onoff = 'Off'];
-    }
- 
-   if(state.trim().toLowerCase() == 'set') {
-   let newChannel = message.content.split(" ").slice(2).join(" ");
-   if(!newChannel) return message.reply(`:gear: **| To set the logging channel use**:
-\`=setlogs set <channel name>\``);
-     if(!message.guild.channels.find(`name`,newChannel)) return message.reply(`:mag_right: **| I can't find this channel.**`);
-    log[message.guild.id].role = newChannel;
-     message.channel.send(`:shield: **| Logging channel has been changed to**:
-\`${newChannel}\``);
-   }
-         }
-    fs.writeFile("./autoRole.json", JSON.stringify), (err) => {
-    if (err) console.error(err);
-  };
-});
 
                               
       
