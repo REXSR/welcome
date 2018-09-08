@@ -966,17 +966,17 @@ client.on("message", function(message) {
 
  let logs = JSON.parse(fs.readFileSync(`./logs.json`, `utf8`));
 client.on('message', message => {
-  if(!logs[message.guild.id]) logs[message.guild.id] = {
+  if(!log[message.guild.id]) 'log'[message.guild.id] = {
   onoff: 'Off',
-  channel: 'logs' // BY ! - NourEldien.#8007
+  channel: 'log' // BY ! - NourEldien.#8007
   };
   if(logs[message.guild.id].onoff === 'Off') return;
-  let logchannel = message.guild.channels.find("name", log[message.guild.id].channel)
+  let logchannel = message.guild.channels.find("name", 'log'[message.guild.id].channel)
  
 });
  
   client.on("roleCreate", rc => {
-    const channel = rc.guild.channels.find("name", log[message.guild.id].channel)
+    const channel = rc.guild.channels.find("name", 'log'[message.guild.id].channel)
     if(channel) {
     var embed = new Discord.RichEmbed()
     .setTitle(rc.guild.name) // BY ! - NourEldien.#8007
@@ -988,7 +988,7 @@ client.on('message', message => {
     });
     //By S Codes
     client.on("roleDelete",  rd => {
-    const channel = rd.guild.channels.find("name", log[message.guild.id].channel)
+    const channel = rd.guild.channels.find("name", 'log'[message.guild.id].channel)
     if(channel) {
     var embed = new Discord.RichEmbed()
     .setTitle(rd.guild.name)
@@ -1000,7 +1000,7 @@ client.on('message', message => {
     });
     // BY ! - NourEldien.#8007
   client.on("channelCreate",  cc => {
-    const channel = cc.guild.channels.find("name", log[message.guild.id].channel)
+    const channel = cc.guild.channels.find("name", 'log'[message.guild.id].channel)
     if(channel) {
     var embed = new Discord.RichEmbed()
     .setTitle(cc.guild.name)
@@ -1012,7 +1012,7 @@ client.on('message', message => {
     });
    
      client.on("deleteChannel",  dc => {
-    const channel = dc.guild.channels.find("name", log[message.guild.id].channel)
+    const channel = dc.guild.channels.find("name", 'log'[message.guild.id].channel)
     if(channel) {
     var embed = new Discord.RichEmbed()
     .setTitle(dc.guild.name)
@@ -1028,7 +1028,7 @@ client.on('message', message => {
     client.on('messageUpdate', (message, newMessage) => {
       if (message.content === newMessage.content) return;
       if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-      const channel = message.guild.channels.find('name', log[message.guild.id].channel);
+      const channel = message.guild.channels.find('name', 'log'[message.guild.id].channel);
       if (!channel) return;
    
       let embed = new Discord.RichEmbed()
@@ -1045,8 +1045,8 @@ client.on('message', message => {
   client.on('guildMemberAdd', member => {
       if (!member || !member.id || !member.guild) return;
       const guild = member.guild;
-     
-      const channel = member.guild.channels.find('name', log[message.guild.id].channel);
+   
+      const channel = member.guild.channels.find('name', 'log'[message.guild.id].channel);
       if (!channel) return;
       let memberavatar = member.user.avatarURL
       const fromNow = moment(member.user.createdTimestamp).fromNow();
@@ -1065,7 +1065,7 @@ client.on('message', message => {
       if (!member || !member.id || !member.guild) return;
       const guild = member.guild;
      
-      const channel = member.guild.channels.find('name', log[message.guild.id].channel);
+      const channel = member.guild.channels.find('name', 'log'[message.guild.id].channel);
       if (!channel) return;
       let memberavatar = member.user.avatarURL
       const fromNow = moment(member.joinedTimestamp).fromNow();
@@ -1081,7 +1081,7 @@ client.on('message', message => {
    
   client.on('messageDelete', message => {
       if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-      const channel = message.guild.channels.find('name', log[message.guild.id].channel);
+      const channel = message.guild.channels.find('name', 'log'[message.guild.id].channel);
       if (!channel) return;
      
       let embed = new Discord.RichEmbed()
