@@ -1135,7 +1135,7 @@ if(message.content.startsWith(prefix + 'setlog')) {
          }
     fs.writeFile("./autoRole.json", JSON.stringify), (err) => {
     if (err) console.error(err);
-  });
+  };
 });
 
                               
