@@ -966,7 +966,7 @@ client.on("message", function(message) {
 
  let logs = JSON.parse(fs.readFileSync(`./logs.json`, `utf8`));
 client.on('message', message => {
-let (!log[message.guild.id]) log[message.guild.id] = {
+let (!log[message.guild.id])log[message.guild.id] = {
   onoff: 'Off',
   channel: 'log' // BY ! - NourEldien.#8007
   };
