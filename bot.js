@@ -1133,7 +1133,7 @@ if(message.content.startsWith(prefix + 'setlog')) {
 \`${newChannel}\``);
    }
          }
-    fs.writeFile("./AutoRole.json", JSON.stringify(ar), (err) => {
+    fs.writeFile("./autoRole.json", JSON.stringify), (err) => {
     if (err) console.error(err);
   });
 });
