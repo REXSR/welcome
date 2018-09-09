@@ -1042,7 +1042,7 @@ setInterval(function(){})
 });
  client.on('message', message => {
   if (message.content ===  prefix + 'cc'){
-              if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**');
+              if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**');
               message.channel.send("**✅ | يتم عمل الالوان**");
                   setInterval(function(){})
                     let count = 0;
