@@ -290,15 +290,7 @@ client.on('voiceStateUpdate', (oldM, newM) => {
 });
 
   
-  client.on(`guildMemberAdd`, member => {
-    let listedusers = (`User1`, `User2`, `User3`, `etc`);
-    if (member.id = listedusers) {
-        member.kick();
-        const lChannel = member.guild.channels.find(`name`, `log`)
-        lChannel.send(`${member} has been banned because they are blacklisted!`)
-    }
-
-})
+  
   
  
 
