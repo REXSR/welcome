@@ -1069,7 +1069,15 @@ message.channel.send(`**:white_check_mark: ${user.tag} kicked from the server ! 
  
          
 
-
+client.on('message', message => {
+  if (message.content.startsWith("replay")) { 
+    if (!serverQueue) return message.channel.send('لا يوجد شيء حالي ف العمل');
+    const embedNP = new Discord.RichEmbed()
+.setDescription(`سيتم اعاده تشغيل الفديو :**${serverQueue.songs[0].title}**`)
+message.channel.send({embed: embedNP})
+return handleVideo(video, message, message.member.voiceChannel);
+}
+});
  
 
                               
