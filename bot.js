@@ -783,7 +783,7 @@ client.on("message", (message) => {
     command = command.slice(prefix.length);
     if (!message.content.startsWith(prefix)) return;
     switch(command) {
-        case "mute" : 
+        case "اسكت" : 
         if (!message.channel.type =="text") return;
         if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
         if (!message.mentions.members.first()) return;
@@ -799,7 +799,7 @@ client.on("message", (message) => {
         });
         message.channel.send(`** <@${message.mentions.members.first().id}> Muted in the server!🤐**`);
         break;
-        case "unmute" : 
+        case "تكلم" : 
         if (!message.channel.type =="text") return;
         if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
         if (!message.mentions.members.first()) return;
@@ -833,7 +833,7 @@ client.on("message", (message) => {
 
  client.on("message", message => {
               var args = message.content.substring(prefix.length).split(" ");
-              if (message.content.startsWith(prefix + "clear")) {
+              if (message.content.startsWith(prefix + "امسح")) {
                   if(!message.channel.guild) return message.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
      if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
           var msg;
@@ -1068,59 +1068,10 @@ message.channel.send(`**:white_check_mark: ${user.tag} kicked from the server ! 
 
  
          
-let points = JSON.parse(fs.readFileSync('./points.json', 'utf8')); // يقوم بقراءه ملف النقاط , والمسار حق النقاطس العام لجميع الأوامر
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
-  };
-if (message.content.startsWith(prefix + 'فكك')) {
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./fkk.json');
-const item = type[Math.floor(Math.random() * type.length)];
-const filter = response => {
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه لتفكيك الكلمه**').then(msg => {
-let embed = new Discord.RichEmbed()
-.setColor("04791c")
- .setImage(`${item.type}`)
-msg.channel.send(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-         const sh = new Discord.RichEmbed()
-.setColor("04791c")
-.setDescription('**✅ |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
-.setFooter(message.author.username, message.author.avatarURL)
-message.channel.sendEmbed(sh);
-        let won = collected.first().author;
-                points[won.id].points++;
-        })
-           .catch(collected => { // في حال لم يقم أحد بالإجابة
-            message.channel.send(`🔚 |**Time Is End**`);
-           })
-          fs.writeFile("./points.json", JSON.stringify(points), (err) => {
-    if (err) console.error(err)
-          })
-        })
-    })
-}
-})
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'نقاطي')) {
-	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-	let userData = points[message.author.id];
-	let embed = new Discord.RichEmbed()
-    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-	.setColor('#000000')
-	.setDescription(`نقاطك: \`${userData.points}\``)
-	message.channel.sendEmbed(embed)
-  }
-  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
-    if (err) console.error(err)
-  })
-});
+
+
+           
 
 
                               
