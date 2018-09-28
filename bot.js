@@ -1198,7 +1198,38 @@ let welcomer = member.guild.channels.find("name","chat");
       });
 
 
-
+client.on('message', message => {
+  if (message.content.startsWith('banvoice')) {
+if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
+let men = message.mentions.users.first()
+let mas = message.author
+if(!men) return message.channel.send('`منشن شخص `');
+message.guild.channels.forEach(c => {
+c.overwritePermissions(men.id, {
+          CONNECT: false
+})
+    })
+const embed = new Discord.RichEmbed()
+.setColor("RANDOM")
+.setDescription(`**
+ <@${men.id}>
+لقد تم منع من دخول الرومات الصوتيه 
+بواسطة : <@${message.author.id}> **`)
+.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
+          
+client.users.get(men.id).sendEmbed(embed)
+const Embed11 = new Discord.RichEmbed()
+.setColor("RANDOM")
+.setAuthor(message.guild.name, message.guild.iconURL)
+.setDescription(`          <@${men.id}>
+لقد تم منع من دخول الرومات الصوتيه 
+بواسطة : <@${message.author.id}> `)
+.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
+message.channel.sendEmbed(Embed11).then(message => {message.delete(10000)})
+    }
+})// نهايه كود الباند الفويس
+ 
+ 
 
 
  
