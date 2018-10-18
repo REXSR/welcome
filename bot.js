@@ -12,7 +12,6 @@ client.on('ready', () => {
   console.log('              Bot Is Online')
 
   console.log('            ╚[════════════]╝')
-
   console.log('')
 
   console.log(`Logged in as ${client.user.tag}!`);
