@@ -964,7 +964,6 @@ client.on("guildMemberAdd", (member) => {
                      
 
 
-const fs = require('fs');
 var Swears = JSON.parse(fs.readFileSync("./swears.json", "utf8"));
 client.on('message', message => {
     var args = message.content.toLowerCase().split(' ');
