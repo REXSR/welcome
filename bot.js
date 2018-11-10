@@ -32,7 +32,7 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-client.user.setActivity("#Power Pro.",{type: "Streaming"})
+client.user.setActivity("SRB BEST.",{type: "Streaming"})
 });
 
 
@@ -189,7 +189,7 @@ if(!xp[message.author.id]){
  
    let lvlEmbed = new Discord.RichEmbed()
    .setAuthor(message.author.username)
-   .setColor("purple")
+   .setColor("GOLD")
    .addField("Level", curlvl, true)
    .addField("XP", curxp, true)
    .setFooter(`${difference} XP til level up`, message.author.displayAvatarURL);
@@ -201,7 +201,7 @@ if(!xp[message.author.id]){
 
 client.on('message',function(message) {
   if(!message.channel.guild) return;
-    if (message.content === prefix + "dis") {
+    if (message.content === prefix + "discrim") {
 let messageArray = message.content.split(" ");
 let args = messageArray.slice(1);
 
@@ -867,7 +867,7 @@ client.on("ready", () => {
 
     while (!guild)
 
-        guild = client.guilds.find("name", "! !")
+        guild = client.guilds.find("name", "CLAN SRB")
 
     guild.fetchInvites().then((data) => {
 
@@ -907,7 +907,7 @@ client.on("guildMemberAdd", (member) => {
 
     while (!guild)
 
-        guild = client.guilds.find("name", "! !")
+        guild = client.guilds.find("name", "CLAN SRB")
 
     guild.fetchInvites().then((data) => {
 
@@ -923,7 +923,7 @@ client.on("guildMemberAdd", (member) => {
 
                     console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
 
- channel.send(` ♥ **تم دعوته من قبل ${Invite.inviter} ♥ `)            
+ channel.send(`تم دعوته بواسطة ${Invite.inviter} `)            
 
  }
 
