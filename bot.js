@@ -657,7 +657,7 @@ client.on('message', async message => {
 
 client.on('message', message => {
           let args = message.content.split(' ').slice(1);
-   if(message.content.split(' ')[0] == '#لون'){
+   if(message.content.split(' ')[0] == 'لون'){
            const embedd = new Discord.RichEmbed()
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
    .setDescription(`**There's No Color With This Number ** :x: `)
@@ -777,7 +777,7 @@ client.on('message', message => {
   if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
   let user = message.mentions.users.first();
   
-  if (message.mentions.users.size < 1) return message.reply(":information_source:  #kick @NAWAF يجب تحديد شخص ");
+  if (message.mentions.users.size < 1) return message.reply(":information_source:  ``#kick @NAWAF`` يجب تحديد شخص ");
   if (!message.guild.member(user)
   .bannable) return message.reply("**يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد طرده**");
 
@@ -852,116 +852,18 @@ message.channel.send(`**:white_check_mark: ${user.tag} kicked from the server ! 
 
 
 
-            
-var dat = JSON.parse("{}");
 
-function forEachObject(obj, func) {
 
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
+   
 
-}
 
-client.on("ready", () => {
+    
+                
 
-    var guild;
 
-    while (!guild)
-
-        guild = client.guilds.find("name", "CLAN SRB")
-
-    guild.fetchInvites().then((data) => {
-
-        data.forEach((Invite, key, map) => {
-
-            var Inv = Invite.code;
-
-            dat[Inv] = Invite.uses;
-
-        })
-
-    })
-
-})
-
-client.on("guildMemberAdd", (member) => {
-
-    let channel = member.guild.channels.find('name', 'chat');
-
-    if (!channel) {
-
-        console.log("!channel fails");
-
-        return;
-
-    }
-
-    if (member.id == client.user.id) {
-
-        return;
-
-    }
-
-    console.log('made it till here!');
-
-    var guild;
-
-    while (!guild)
-
-        guild = client.guilds.find("name", "CLAN SRB")
-
-    guild.fetchInvites().then((data) => {
-
-        data.forEach((Invite, key, map) => {
-
-            var Inv = Invite.code;
-
-            if (dat[Inv])
-
-                if (dat[Inv] < Invite.uses) {
-
-                    console.log(3);
-
-                    console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
-
- channel.send(`تم دعوته بواسطة ${Invite.inviter} `)            
-
- }
-
-            dat[Inv] = Invite.uses;
-
-        })
-
-    })
-
-});
           
 
 
- client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
- 
-    if(command === "clear") {
-        const emoji = client.emojis.find("name", "log")
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-        }    
-    }
-}
-});        
-                   
-                      
                      
 
 
@@ -1010,99 +912,23 @@ client.on('message', message => {
 
 
 
-const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
-client.on("message", message => {
-    fs.writeFile('./suck.json', JSON.stringify(suck));
-});
-client.on('ready', () => {
-    setInterval(function(){
-        client.guilds.forEach(g => {
-            if (suck[g.id]) {
-                if (suck[g.id].role) {
-                    var role = g.roles.get(suck[g.id].role);
-                    if (role) {
-                        role.edit({color : "RANDOM"});
-                    };
-                };
-            };
-        });
-    }, 1500);
-});
-client.on("message", message => {
-    if (!message.content.startsWith(prefix)) return;
-    if (message.author.bot) return;
-    if (message.channel.type !== "text") return message.reply("This Command Is Only Allowed In Servers");
-    var args = message.content.split(" ");
-    var command = args[0].slice(prefix.length);
-    switch(command) {
-        case "rainbow" :
-        if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("no no");
-        message.guild.createRole({name : "rainbow", color : "RANDOM"}).then(r => {
-            r.edit({color : "RANDOm"});
-            suck[message.guild.id] = {role : r.id};
-        });
-    };
-});
 
 
+              
     
 
 
 
 
-let points = {}
 
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
-  };
-if (message.content.startsWith(prefix + 'فكك')) {
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-
-const type = require('fkk.json');
-const item = type[Math.floor(Math.random() * type.length)];
-const filter = response => {
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه لتفكيك الكلمه**').then(msg => {
-
-            
-msg.channel.send(`${item.type}`).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **مبروك لقد كسبت نقطه
-لمعرفة نقطاك الرجاء كتابة %نقاطي**`);
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let userData = points[message.author.id];
-            userData.points++;
-          })
-          .catch(collected => {
-            message.channel.send(`:x: **خطأ حاول مرة اخرى**`);
-            console.log('[Typing] Error: No one type the word.');
-          })
-        })
-    })
-}
-});
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'نقاطي')) {
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
-    let userData = points[message.author.id];
-    let embed = new Discord.RichEmbed()
-    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-    .setColor('#000000')
-    .setDescription(`نقاطك: \`${userData.points}\``)
-    message.channel.sendEmbed(embed)
-  }
 
   
-});
  
 const slowmode_mentions = new Map();
 const slowmode_links = new Map();
 const slowmode_attachments = new Map();
 const ratelimit = 7500; // within 7.5 seconds
-const logChannel = " CHANNEL ID HERE"; // logs channel id
+const logChannel = "470698398559895572"; // logs channel id
  
 client.on("message", message => {
  
