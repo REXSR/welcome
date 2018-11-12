@@ -369,7 +369,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 });
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', 'Power.'));
+member.addRole(member.guild.roles.find('name', 'member'));
 });
  
 client.on('message', message => {
@@ -592,13 +592,12 @@ client.on("message", (message) => {
      if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
           var msg;
           msg = parseInt();
-        
+       
         message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
         message.channel.sendMessage("", {embed: {
           title: "تــم مسح الشات",
           color: 0x06DF00,
           footer: {
-            
           }
         }}).then(msg => {msg.delete(9000)});
                             }
@@ -1097,7 +1096,18 @@ message.channel.send("** ❌  العضو يجب أن يكون متواجد بر�
 
  
 
- 
+ client.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+if (message.content.startsWith(prefix + 'مسح')) {
+ let args = message.content.split(" ").slice(1)
+    let messagecount = parseInt(args);
+    if (args > 100) return message.reply("**:octagonal_sign: || يجب ان يكون عدد المسح أقل من 100 .**").then(messages => messages.delete(5000))
+    if (!messagecount) return message.reply("**:bulb: || أختر كميه الرسائل المراد مسحها .**").then(messages => messages.delete(5000))
+    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
+    message.channel.send(`\`${args}\` : __عدد الرسائل التي تم مسحها __ `).then(messages => messages.delete(5000));
+  }
+  });
+
  
 
 
