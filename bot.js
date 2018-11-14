@@ -32,7 +32,7 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-client.user.setActivity("SRB BEST.",{type: "Streaming"})
+client.user.setActivity("SRB BEST.",{type: "Playing"})
 });
 
 
@@ -585,27 +585,96 @@ client.on("message", (message) => {
 })
 
 
- client.on("message", message => {
-              var args = message.content.substring(prefix.length).split(" ");
-              if (message.content.startsWith(prefix + "امسح")) {
-                  if(!message.channel.guild) return message.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
-     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**⚠  لا يوجد لديك صلاحية لمسح الشات**');
-          var msg;
-          msg = parseInt();
-       
-        message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-        message.channel.sendMessage("", {embed: {
-          title: "تــم مسح الشات",
-          color: 0x06DF00,
-          footer: {
-          }
-        }}).then(msg => {msg.delete(9000)});
-                            }
-  
-       
-  });                 
+ 
+  client.on("message", message => {
+
+    var prefix = "";
 
  
+
+            var args = message.content.substring(prefix.length).split(" ");
+
+            if (message.content.startsWith(prefix + "مسح")) {
+
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('');
+
+        var msg;
+
+        msg = parseInt();
+
+      
+
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+
+      message.channel.sendMessage("", {embed: {
+
+        title: "",
+
+        color: 0x06DF00,
+
+        description: "",
+
+        footer: {
+
+          text: ""
+
+        }
+
+      }}).then(msg => {msg.delete(6000)});
+
+                          }
+
+     
+
+});  
+       
+ 
+
+client.on("message", message => {
+
+    var prefix = "";
+
+ 
+
+            var args = message.content.substring(prefix.length).split(" ");
+
+            if (message.content.startsWith(prefix + "امسح")) {
+
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('');
+
+        var msg;
+
+        msg = parseInt();
+
+      
+
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+
+      message.channel.sendMessage("", {embed: {
+
+        title: "",
+
+        color: 0x06DF00,
+
+        description: "",
+
+        footer: {
+
+          text: ""
+
+        }
+
+      }}).then(msg => {msg.delete(3000)});
+
+                          }
+
+     
+
+});  
+
+
+
+
 client.on('message', async message => {
             if(message.content.includes('discord.gg')){ 
                 if(message.member.hasPermission("MANAGE_GUILD")) return;
@@ -640,7 +709,7 @@ client.on('message', async message => {
             .setAuthor(message.author.username, message.author.avatarURL)
         .setFooter(`${message.guild.name} `)
      message.channel.send(embed500)
-     message.author.send('` انت معاقب ميوت شاتي بسبب نشر سرفرات ان كان عن طريق الخطا **ف** تكلم مع الادارة `');
+     message.author.send('` انت معاقب ميوت بشات بسبب نشر سرفرات ان كان عن طريق الخطا **ف** تكلم مع الادارة `');
    
        
     }
