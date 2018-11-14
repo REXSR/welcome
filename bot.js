@@ -10,7 +10,7 @@ client.on('ready', () => {
 
   console.log('            ╔[════════════]╗')
 
-  console.log('              Bot Is Online')
+  console.log('              Bot Is اونلاين')
 
   console.log('            ╚[════════════]╝')
   console.log('')
