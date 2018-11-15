@@ -1163,6 +1163,16 @@ message.channel.send("** ❌  العضو يجب أن يكون متواجد بر�
 
  
 
+ client.on("guildMemberAdd", member => {
+
+  member.createDM().then(function (channel) {
+
+  return channel.send(`**Welcome To Server Power☆**`)
+
+}).catch(console.error)
+
+})
+
  
 
  
