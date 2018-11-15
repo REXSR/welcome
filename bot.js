@@ -369,7 +369,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 });
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', 'member'));
+member.addRole(member.guild.roles.find('name', 'Power.'));
 });
  
 client.on('message', message => {
