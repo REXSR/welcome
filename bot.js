@@ -10,7 +10,7 @@ client.on('ready', () => {
 
   console.log('            ╔[════════════]╗')
 
-  console.log('              Bot Is اونلاين')
+  console.log('              Bot Ibhccs اونلاين')
 
   console.log('            ╚[════════════]╝')
   console.log('')
@@ -32,7 +32,7 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-client.user.setActivity("SRB BEST.",{type: "Playing"})
+client.user.setActivity("Power BEST.",{type: "Streaming"})
 });
 
 
