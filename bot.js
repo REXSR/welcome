@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const prefix = "";
+const prefix = "#";
 client.on('ready', () => {
 
   console.log('╔[════════════════════════════════════]╗');   
@@ -1043,6 +1043,80 @@ color: 'RANDOM'})
 }
 
 });
+
+
+
+
+client.on('message', message => {
+
+            if (message.content === 'الوان') {
+
+              message.channel.send('**لون**');
+
+              message.channel.sendFile("https://cdn.discordapp.com/attachments/511595465058549761/514549779599065126/colors.png");
+
+               
+
+
+
+            }
+
+});
+
+
+
+
+
+
+
+const invites = {};
+
+const wait = require('util').promisify(setTimeout);
+
+client.on('ready', () => {
+
+  wait(5000);
+
+  client.guilds.forEach(g => {
+
+    g.fetchInvites().then(guildInvites => {
+
+      invites[g.id] = guildInvites;
+
+    });
+
+  });
+
+});
+
+client.on('guildMemberAdd', member => {
+
+  member.guild.fetchInvites().then(guildInvites => {
+
+    const ei = invites[member.guild.id];
+
+    invites[member.guild.id] = guildInvites;
+
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+
+    const inviter = client.users.get(invite.inviter.id);
+
+    const logChannel = member.guild.channels.find(channel => channel.name === "téxt");
+
+    logChannel.send(`Invited by: <@${inviter.tag}>`);
+
+  });
+
+});
+
+
+
+
+
+
+
+
+    
 
 
 
