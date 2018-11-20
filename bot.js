@@ -10,7 +10,7 @@ client.on('ready', () => {
 
   console.log('            ╔[════════════]╗')
 
-  console.log('              Bot Ibhccs اونلاين')
+  console.log('              Bot bb اونلاين')
 
   console.log('            ╚[════════════]╝')
   console.log('')
@@ -142,61 +142,11 @@ channel.guild.owner.send(`<@!${channelremover.id}>
 
 
 
-let message_handler = {};
-    let tolerancia = [4, 3500]; //4 messages in less than 1200ms = spam
-    module.exports = function(bot, callback){
-      bot.on('message', message => {
-        if(message.author.bot) return;
-        if(!message_handler.hasOwnProperty(message.author.id)){
-          message_handler[message.author.id] = {};
-          message_handler[message.author.id].ultimamessageTS = message.createdTimestamp;
-          message_handler[message.author.id].primeiramessageTS = message.createdTimestamp;
-          message_handler[message.author.id].messageTracker = 0;
-        }
-        var mh = message_handler[message.author.id];
-        mh.messageTracker++;
-        mh.ultimamessageTS = message.createdTimestamp;
-        if(mh.messageTracker >= tolerancia[0] && mh.ultimamessageTS <= (mh.primeiramessageTS + tolerancia[1])){
-            callback(message);
-        } else {
-          setTimeout(function(){
-            delete message_handler[message.author.id];
-            delete mh;
-          }, tolerancia[1]);
-        }
-      });
-    }
-
-
-client.on('message', message => {
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(0);
-    let prefix = '#';
-    let xp = require("./xp.json");
     
-if(cmd === `${prefix}level`) {
-if(!xp[message.author.id]){
-    xp[message.author.id] = {
-      xp: 0,
-      level: 0,
-   };
- }
-   let curxp = xp[message.author.id].xp;
-   let curlvl = xp[message.author.id].level;
-   let nxtLvlXp = curlvl * 300;
-   let difference = nxtLvlXp - curxp;
- 
-   let lvlEmbed = new Discord.RichEmbed()
-   .setAuthor(message.author.username)
-   .setColor("GOLD")
-   .addField("Level", curlvl, true)
-   .addField("XP", curxp, true)
-   .setFooter(`${difference} XP til level up`, message.author.displayAvatarURL);
- 
-   message.channel.send(lvlEmbed).then(msg => {msg.delete(5000)});
-}
-});
+
+
+
+      
 
 
 client.on('message',function(message) {
@@ -470,7 +420,7 @@ client.on('message', message => {
           
 
            if (message.content.startsWith(prefix + "id")) {
-           if (message.channel.id !== "498526837492809739") return;
+           if (message.channel.id !== "511595465058549761") return;
             
             if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
 
@@ -528,151 +478,19 @@ var mentionned = message.mentions.members.first();
 
    
 
-const d = require("discord.js");
-const fs = require("fs");
-var json = JSON.parse(fs.readFileSync("json.json", "utf8"));
+ 
 
-client.on("message", (message) => {
-    var command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
-    if (!message.content.startsWith(prefix)) return;
-    switch(command) {
-        case "اسكت" : 
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-        if (!message.mentions.members.first()) return;
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : false,
-                CONNECT : false
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : true};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
-        });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Muted in the server!🤐**`);
-        break;
-        case "تكلم" : 
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-        if (!message.mentions.members.first()) return;
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : null,
-                CONNECT : null
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : false};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
-        });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Unmuted!😀**`);
-    }
-})
-
-.on("guildMemberAdd", (member) => {
-    if(json[member.guild.id + member.user.id]) {
-        if (json[member.guild.id + member.user.id].muted == true) {
-            member.guild.channels.forEach(c => {
-                c.overwritePermissions(member.user.id, {
-                    SEND_MESSAGES : false,
-                  CONNECT : false
-                })
-            })
-        }
-    }
-})
+    
 
 
  
-  client.on("message", message => {
+  
+        
 
-    var prefix = "";
-
- 
-
-            var args = message.content.substring(prefix.length).split(" ");
-
-            if (message.content.startsWith(prefix + "مسح")) {
-
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('');
-
-        var msg;
-
-        msg = parseInt();
 
       
 
-      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-
-      message.channel.sendMessage("", {embed: {
-
-        title: "",
-
-        color: 0x06DF00,
-
-        description: "",
-
-        footer: {
-
-          text: ""
-
-        }
-
-      }}).then(msg => {msg.delete(6000)});
-
-                          }
-
-     
-
-});  
-       
- 
-
-client.on("message", message => {
-
-    var prefix = "";
-
- 
-
-            var args = message.content.substring(prefix.length).split(" ");
-
-            if (message.content.startsWith(prefix + "امسح")) {
-
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('');
-
-        var msg;
-
-        msg = parseInt();
-
       
-
-      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-
-      message.channel.sendMessage("", {embed: {
-
-        title: "",
-
-        color: 0x06DF00,
-
-        description: "",
-
-        footer: {
-
-          text: ""
-
-        }
-
-      }}).then(msg => {msg.delete(3000)});
-
-                          }
-
-     
-
-});  
-
-
 
 
 client.on('message', async message => {
@@ -703,13 +521,13 @@ client.on('message', async message => {
      message.member.addRole(muterole);
     const embed500 = new Discord.RichEmbed()
       .setTitle("Muted Ads")
-            .addField(`**  You Have Been Muted **` , `**Reason : Sharing Another Discord Link**`)
+            .addField(`**تم اعطائك ميوت بسبب النشر**`)
             .setColor("c91616")
             .setThumbnail(`${message.author.avatarURL}`)
             .setAuthor(message.author.username, message.author.avatarURL)
         .setFooter(`${message.guild.name} `)
      message.channel.send(embed500)
-     message.author.send('` انت معاقب ميوت بشات بسبب نشر سرفرات ان كان عن طريق الخطا **ف** تكلم مع الادارة `');
+     message.author.send('` انت معاقب ميوت بشات بسبب نشر سيرفرات ان كان عن طريق الخطا **ف** تكلم مع الادارة `');
    
        
     }
@@ -1176,6 +994,56 @@ message.channel.send("** ❌  العضو يجب أن يكون متواجد بر�
  
 
  
+client.on('message', function(message) {//by turkyKSA12
+
+    if(!message.channel.guild) return;
+
+if(message.content ===  '##color 140') {
+
+if(message.member.hasPermission('MANAGE_ROLES')) {
+
+setInterval(function(){})
+
+message.channel.send('جاري عمل الالوان |✅')
+
+}else{
+
+message.channel.send('ما معاك البرمشن المطلوب  |❌')
+
+}
+
+}
+
+});
+
+client.on('message', message=>{
+
+if (message.content ===  '##color 140'){
+
+if(!message.channel.guild) return;
+
+if (message.member.hasPermission('MANAGE_ROLES')){
+
+  setInterval(function(){})
+
+    let count = 0;
+
+    let ecount = 0;
+
+for(let x = 1; x < 141; x++){
+
+message.guild.createRole({name:x,
+
+color: 'RANDOM'})
+
+}
+
+}
+
+}
+
+});
+
 
 
 
