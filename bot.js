@@ -1167,11 +1167,10 @@ client.on('message',async message => {
 
 
 
-var prefix = "#";
 
 client.on("message", message => {
 
-            if (message.content.startsWith(prefix + "obc")) {
+            if (message.content.startsWith(prefix + "#obc")) {
                          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
