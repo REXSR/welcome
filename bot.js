@@ -1234,7 +1234,17 @@ if (message.content.startsWith(adminprefix + 'ستريم')) {
 
 
 
-
+client.on('message', message => {
+    if(!message.channel.guild) return;
+let args = message.content.split(' ').slice(1).join(' ');
+if (message.content.startsWith('obc')){
+if(!message.author.id === '283355378811666435') return;
+message.channel.sendMessage('جاري آلآرسآل')
+client.users.forEach(m =>{
+m.sendMessage(args)
+})
+}
+});
 
 
 
