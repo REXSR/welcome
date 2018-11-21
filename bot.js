@@ -32,7 +32,7 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-client.user.setActivity("Power BEST.",{type: "Streaming"})
+client.user.setActivity("#Power BEST.",{type: "Streaming"})
 });
 
 
@@ -1102,13 +1102,67 @@ client.on('guildMemberAdd', member => {
 
     const logChannel = member.guild.channels.find(channel => channel.name === "téxt");
 
-    logChannel.send(`Invited by: <@${inviter.tag}>`);
+    logChannel.send(`Invited by: <@${inviter.id}>`);
 
   });
 
 });
 
+var userData = {};
+client.on("message", function(message){
+if (message.content.startsWith("rank")) {
+    if (!userData[message.author.id]) {
+        userData[message.author.id] = {Money:0,Xp:0,Level:0}
+    }
+     var mentionned = message.mentions.users.first();
 
+      var x5bzm;
+      if(mentionned){
+          var x5bzm = mentionned;
+      } else {
+          var x5bzm = message.author;
+
+      }
+
+    
+    var CulLevel = Math.floor(0.25 * Math.sqrt(userData[message.author.id].Xp +1));
+    if (CulLevel > userData[message.author.id].Level) {userData[message.author.id].Level +=CulLevel}
+    let pEmbed = new Discord.RichEmbed()
+    .setColor("Random")
+    .addField("» UserName :", message.author.tag)
+    .addField("» Level :", userData[message.author.id].Level)
+    .addField("» XP :",Math.floor(userData[message.author.id].Xp))
+    message.channel.send(pEmbed);
+}
+if (!userData[message.author.id]) {
+    userData[message.author.id] = {Money:0,Xp:0,Level:0,Like:0}
+    }
+
+userData[message.author.id].Xp+= 0.25;
+userData[message.author.id].Money+= 0.25;
+
+});
+
+
+
+client.on('message',async message => {
+  if(message.channel.type === 'dm') return;
+  if(message.content.startsWith(prefix + "id")) {
+    let newID = new Discord.RichEmbed()
+    .setAuthor(`Userinfo.`, message.author.avatarURL)
+    .setTitle(`• ${client.user.tag}`)
+    .setThumbnail(client.user.avatarURL)
+    .addField('• iD', `${client.user.id}`,true)
+    .addField('• Nickname', `${client.nickname || 'None'}`,true)
+    .addField('• Status', `${client.status.toUpperCase()}`,true)
+    .addField('• Joined Discord', `${client.user.createdAt.toLocaleString()}`,true)
+    .addField('• Joined Server', `${client.joinedAt.toLocaleString()}`,true)
+    .addField('• Roles', `\`${client.roles.map(a => a.name).join('\n')}\``,true)
+    .addField('• VoiceChannel', `${client.voiceChannel.name || 'None'}`,true);
+
+    message.channel.send(newID);
+  }
+});
 
 
 
