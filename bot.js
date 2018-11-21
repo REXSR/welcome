@@ -201,7 +201,7 @@ Discord API: ${client.ping.toFixed(0)} ms\`\`\``);
         
 client.on('message', async message => {
   let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
+  if(message.content.startsWith(prefix + "#اسكت")) {
     if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -294,7 +294,7 @@ client.on('message', async message => {
 let command = message.content.split(" ")[0];
      command = command.slice(prefix.length);
     let args = message.content.split(" ").slice(1);  //kinggamer حقوق الفا كودز و
-if(command === `unmute`) {2
+if(command === `#تكلم`) {2
   if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You Donot HavePermission Mute_Members**").then(m => m.delete(5000));
 if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
  
@@ -809,124 +809,10 @@ client.on('message', message => {
 
   
  
-const slowmode_mentions = new Map();
-const slowmode_links = new Map();
-const slowmode_attachments = new Map();
-const ratelimit = 7500; // within 7.5 seconds
-const logChannel = "470698398559895572"; // logs channel id
- 
-client.on("message", message => {
- 
-    if (message.content.startsWith("!ping")) {
-        let startTime = Date.now();
-        message.channel.send("Ping...").then(newMessage => {
-            let endTime = Date.now();
-            newMessage.edit("Pong! Took `" + Math.round(endTime - startTime) + "ms`!");
-        });
-    }
- 
-    function log(logmessage) {
-        if (message.guild.channels.has(logChannel)) {
-            message.guild.channels.get(logChannel).send({ embed: logmessage}).then().catch(err => console.log(err));
-        }
-    }
- 
-   
-    let banLevel = {
-        "mentions": 10,
-        "links": 10,
-        "attachments": 10
-    };
- 
-   
-    if (message.author.bot || !message.guild || !message.member || !message.guild.member(client.user).hasPermission("BAN_MEMBERS") || message.member.hasPermission("MANAGE_MESSAGES")) return;
- 
- 
-    if (message.mentions.users.size == 1 && message.mentions.users.first().bot) return;
- 
-   
-    let entry_mentions = slowmode_mentions.get(message.author.id);
-    let entry_links = slowmode_links.get(message.author.id);
-    let entry_attachments = slowmode_attachments.get(message.author.id);
- 
-    if (!entry_mentions) {
-        entry_mentions = 0;
-        slowmode_mentions.set(message.author.id, entry_mentions);
-    }
-    if (!entry_links) {
-        entry_links = 0;
-        slowmode_links.set(message.author.id, entry_links);
-    }
-    if (!entry_attachments) {
-        entry_attachments = 0;
-        slowmode_attachments.set(message.author.id, entry_attachments);
-    }
- 
-   
-    entry_mentions += message.mentions.users.size + message.mentions.roles.size;
-    entry_links += message.embeds.length;
-    entry_attachments += message.attachments.size;
-   
-    slowmode_mentions.set(message.author.id, entry_mentions);
-    slowmode_links.set(message.author.id, entry_links);
-    slowmode_attachments.set(message.author.id, entry_attachments);
- 
-   
-    if (entry_links > banLevel.links) {
-        message.member.ban(1).then(member => {
-            message.channel.send(`:ok_hand: banned \`${message.author.tag}\` for \`link spam\``);
-            log(new Discord.RichEmbed().setTitle(':hammer: Banned').setColor(0xFF0000).setTimestamp().addField('User', `${message.author.tag} (${message.author.id})`).addField('Reason', `Posting too many links (${entry_links}x)`));
-            slowmode_links.delete(message.author.id);
-        })
-        .catch(e => {
-            log(new Discord.RichEmbed().setTitle(':x: ERROR').setColor(0x000001).setTimestamp().addField('User', `${message.author.tag} (${message.author.id})`).addField('Reason', `Could not ban because they have a higher role`));
-        });
-    } else {
-        setTimeout(()=> {
-            entry_links -= message.embeds.length;
-            if(entry_links <= 0) slowmode_links.delete(message.author.id);
-        }, ratelimit);
-    }
- 
-    if (entry_mentions > banLevel.mentions) {
-        message.member.ban(1).then(member => {
-            message.channel.send(`:ok_hand: banned \`${message.author.tag}\` for \`mention spam\``);
-            log(new Discord.RichEmbed().setTitle(':hammer: Banned').setColor(0xFF0000).setTimestamp().addField('User', `${message.author.tag} (${message.author.id})`).addField('Reason', `Mentioning too many users (${entry_mentions}x)`));
-            slowmode_mentions.delete(message.author.id);
-        })
-        .catch(e => {
-            log(new Discord.RichEmbed().setTitle(':x: ERROR').setColor(0x000001).setTimestamp().addField('User', `${message.author.tag} (${message.author.id})`).addField('Reason', `Could not ban because they have a higher role`));
-        });
-    } else {
-        setTimeout(()=> {
-            entry_mentions -= message.mentions.users.size + message.mentions.roles.size;
-            if(entry_mentions <= 0) slowmode_mentions.delete(message.author.id);
-        }, ratelimit);
-    }
- 
-    if (entry_attachments > banLevel.attachments) {
-        message.member.ban(1).then(member => {
-            message.channel.send(`:ok_hand: banned \`${message.author.tag}\` for \`image spam\``);
-            log(new Discord.RichEmbed().setTitle(':hammer: Banned').setColor(0xFF0000).setTimestamp().addField('User', `${message.author.tag} (${message.author.id})`).addField('Reason', `Posting too many images (${entry_attachments}x)`));
-            slowmode_attachments.delete(message.author.id);
-        })
-        .catch(e => {
-            log(new Discord.RichEmbed().setTitle(':x: ERROR').setColor(0x000001).setTimestamp().addField('User', `${message.author.tag} (${message.author.id})`).addField('Reason', `Could not ban because they have a higher role`));
-        });
-    } else {
-        setTimeout(()=> {
-            entry_attachments -= message.attachments.size;
-            if(entry_attachments <= 0) slowmode_attachments.delete(message.author.id);
-        }, ratelimit);
-    }
- 
-});
- 
-process.on("unhandledRejection", err => {
-    console.error("Uncaught Promise Error: \n" + err.stack);
-});
 
  
+    
+
 
 
 
@@ -1017,7 +903,7 @@ message.channel.send('ما معاك البرمشن المطلوب  |❌')
 
 client.on('message', message=>{
 
-if (message.content ===  '##color 140'){
+if (message.content ===  '##bcxg 14vv0'){
 
 if(!message.channel.guild) return;
 
@@ -1100,7 +986,7 @@ client.on('guildMemberAdd', member => {
 
     const inviter = client.users.get(invite.inviter.id);
 
-    const logChannel = member.guild.channels.find(channel => channel.name === "téxt");
+    const logChannel = member.guild.channels.find(channel => channel.name === "power");
 
     logChannel.send(`Invited by: <@${inviter.id}>`);
 
@@ -1110,7 +996,7 @@ client.on('guildMemberAdd', member => {
 
 var userData = {};
 client.on("message", function(message){
-if (message.content.startsWith("rank")) {
+if (message.content.startsWith("#rank")) {
     if (!userData[message.author.id]) {
         userData[message.author.id] = {Money:0,Xp:0,Level:0}
     }
@@ -1147,7 +1033,7 @@ userData[message.author.id].Money+= 0.25;
 
 client.on('message',async message => {
   if(message.channel.type === 'dm') return;
-  if(message.content.startsWith(prefix + "id")) {
+  if(message.content.startsWith(prefix + "#id")) {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
     .setTitle(`• ${client.user.tag}`)
@@ -1184,7 +1070,7 @@ client.on("message", message => {
 
 
     
-const adminprefix = "+";
+const adminprefix = "#";
 
 const devs = ['','283355378811666435'];
 
@@ -1237,7 +1123,7 @@ if (message.content.startsWith(adminprefix + 'ستريم')) {
 client.on('message', message => {
     if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('obc')){
+if (message.content.startsWith('#obc')){
 if(!message.author.id === '283355378811666435') return;
 message.channel.sendMessage('جاري آلآرسآل')
 client.users.forEach(m =>{
