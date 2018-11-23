@@ -883,7 +883,7 @@ client.on('message', function(message) {//by turkyKSA12
 
     if(!message.channel.guild) return;
 
-if(message.content ===  '##color 140') {
+if(message.content ===  '##bkpp 140') {
 
 if(message.member.hasPermission('MANAGE_ROLES')) {
 
@@ -936,9 +936,9 @@ client.on('message', message => {
 
             if (message.content === 'الوان') {
 
-              message.channel.send('**لون**');
+              message.channel.send('');
 
-              message.channel.sendFile("https://cdn.discordapp.com/attachments/511595465058549761/514549779599065126/colors.png");
+              message.channel.sendFile("https://cdn.discordapp.com/attachments/511595465058549761/515538025149890570/colors.png");
 
                
 
@@ -988,7 +988,7 @@ client.on('guildMemberAdd', member => {
 
     const logChannel = member.guild.channels.find(channel => channel.name === "power");
 
-    logChannel.send(`Invited by: <@${inviter.id}>`);
+    logChannel.send(`تم دعوته بواسطة: <@${inviter.id}>`);
 
   });
 
