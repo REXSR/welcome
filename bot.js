@@ -1439,46 +1439,29 @@ client.on('message',async message => {
 
 
 
-client.on('message', message => {
 
-var prefix = ""
 
-    if (message.content.startsWith(prefix + 'مسح')) {
 
-      if (!message.member.hasPermission('MANAGE_MESSAGES')) return 
 
-  message.delete()
 
-  if(!message.channel.guild) return;
 
-  let args = message.content.split(" ").slice(1);
 
-  
 
-  const messagecount = parseInt(args.join(' '));
+if(message.content.startsWith(prefix + "مسح")) {
 
-  
+        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGE")) return message.channel.send("ليس لديك إذن !");
 
-  message.channel.fetchMessages({
+        let args = message.content.split(" ").slice(1);
 
-  
+        if(!args[0]) return message.channel.send("يجب عليك تحديد عدد من الرسائل لحذفها !")
 
-  limit: messagecount
+        message.channel.bulkDelete(args[0]).then(() => {
 
-  
+            message.channel.send(`${args[0]} تم حذف الرسائل !`);
 
-  }).then(messages => message.channel.bulkDelete(messages));
+        });
 
-  message.channel.sendMessage("", {embed: {
     }
-
-    }}).then(msg => {msg.delete(20000)});
-
-  };
-
-  
-
-  });
 
 
 
