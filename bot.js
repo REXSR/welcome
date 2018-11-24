@@ -10,7 +10,7 @@ client.on('ready', () => {
 
   console.log('            ╔[════════════]╗')
 
-  console.log('              Bot bb اونلاين')
+  console.log('              Bot auhft اونلاين')
 
   console.log('            ╚[════════════]╝')
   console.log('')
@@ -32,7 +32,7 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-client.user.setActivity("#Power BEST.",{type: "Streaming"})
+client.user.setActivity("#Power Best.",{type: "Streaming"})
 });
 
 
@@ -201,7 +201,7 @@ Discord API: ${client.ping.toFixed(0)} ms\`\`\``);
         
 client.on('message', async message => {
   let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "اسكت")) {
+  if(message.content.startsWith(prefix + "mute")) {
     if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -294,7 +294,7 @@ client.on('message', async message => {
 let command = message.content.split(" ")[0];
      command = command.slice(prefix.length);
     let args = message.content.split(" ").slice(1);  //kinggamer حقوق الفا كودز و
-if(command === `تكلم`) {2
+if(command === `unmute`) {2
   if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**You Donot HavePermission Mute_Members**").then(m => m.delete(5000));
 if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I donot Have Permission Mute_Members**").then(msg => msg.delete(6000))
  
@@ -674,87 +674,6 @@ message.channel.send(`**:white_check_mark: ${user.tag} kicked from the server ! 
 }
 });  
     
-
-
-    
-   
-     
-   
-   
-   
-    
-   
-    
-  
-      
-   
-  
- 
-
- 
-         
-
-
-
-           
-
-
-                              
-      
-           
-                          
-
-
-
-
-        
-   
- 
-
-
-
- 
-
-
-
-    
- 
-
- 
- 
-
-
- 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-    
-                
-
-
-          
-
-
-                     
-
-
- 
-            
-           
        const Jimp = require('jimp');
 client.on('message', message => {
 	if (message.content.startsWith(`ship`)) {
@@ -870,7 +789,7 @@ message.channel.send("** ❌  العضو يجب أن يكون متواجد بر�
 
   member.createDM().then(function (channel) {
 
-  return channel.send(`**Welcome To Server Power☆**`)
+  return channel.send(`**Welcome To Server Power**`)
 
 }).catch(console.error)
 
@@ -960,7 +879,7 @@ const wait = require('util').promisify(setTimeout);
 
 client.on('ready', () => {
 
-  wait(5000);
+  wait(10000);
 
   client.guilds.forEach(g => {
 
@@ -1032,7 +951,7 @@ userData[message.author.id].Money+= 0.25;
 
 
 client.on('message',async message => {
-  if(message.channel.type === 'dm') return;
+  if(message.channel.type === '511595465058549761') return;
   if(message.content.startsWith(prefix + "#id")) {
     let newID = new Discord.RichEmbed()
     .setAuthor(`Userinfo.`, message.author.avatarURL)
@@ -1513,6 +1432,8 @@ client.on('message',async message => {
     });
   }
 });
+
+
 
 
 
