@@ -1439,6 +1439,54 @@ client.on('message',async message => {
 
 
 
+client.on('message', message => {
+
+var prefix = ""
+
+    if (message.content.startsWith(prefix + 'مسح')) {
+
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return 
+
+  message.delete()
+
+  if(!message.channel.guild) return;
+
+  let args = message.content.split(" ").slice(1);
+
+  
+
+  const messagecount = parseInt(args.join(' '));
+
+  
+
+  message.channel.fetchMessages({
+
+  
+
+  limit: messagecount
+
+  
+
+  }).then(messages => message.channel.bulkDelete(messages));
+
+  message.channel.sendMessage("", {embed: {
+    }
+
+    }}).then(msg => {msg.delete(20000)});
+
+  };
+
+  
+
+  });
+
+
+
+
+
+
+
+
 
 
 
