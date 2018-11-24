@@ -1445,7 +1445,8 @@ client.on('message',async message => {
 
 
 
-
+client.on('message', message => {
+       var prefix = '';
 
 if(message.content.startsWith(prefix + "مسح")) {
 
