@@ -1445,25 +1445,8 @@ client.on('message',async message => {
 
 
 
-client.on('message', message => {
-       var prefix = '';
 
-if(message.content.startsWith(prefix + "مسح")) {
-
-        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGE")) return message.channel.send("ليس لديك إذن !");
-
-        let args = message.content.split(" ").slice(1);
-
-        if(!args[0]) return message.channel.send("يجب عليك تحديد عدد من الرسائل لحذفها !")
-
-        message.channel.bulkDelete(args[0]).then(() => {
-
-            message.channel.send(`${args[0]} تم حذف الرسائل !`);
-
-        });
-
-    }
-
+            
 
 
 
