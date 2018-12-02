@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require('moment');
+const first = required('first');
+const fetchAuditLogs = require('fetchAuditLogs');
 const prefix = "";
 client.on('ready', () => {
 
@@ -10,7 +12,7 @@ client.on('ready', () => {
 
   console.log('            ╔[════════════]╗')
 
-  console.log('              Bot auhft اونلاين')
+  console.log('              Bot vvvv اونلاين')
 
   console.log('            ╚[════════════]╝')
   console.log('')
@@ -32,7 +34,7 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => {
-client.user.setActivity("#Power Best.",{type: "Streaming"})
+client.user.setActivity("Power Best.",{type: "Streaming"})
 });
 
 
