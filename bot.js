@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require('moment');
-const first = required('first');
+const first = require('first');
 const fetchAuditLogs = require('fetchAuditLogs');
 const prefix = "";
 client.on('ready', () => {
