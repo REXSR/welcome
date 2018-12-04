@@ -189,7 +189,7 @@ client.on("guildMemberAdd", member => {
 client.on("message",(message) => {
     if(message.content.startsWith(prefix + "antihack")) {
         if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("** You Don't Have Permission `Manage channels` To Do This Command");
-        message.guild.createChannel("hack-log").then(c => {
+        message.guild.createChannel("owners").then(c => {
             c.setPosition(1);
             temp[message.guild.id].channel = c.id
             message.channel.send("** Done I Created Channel Named hack-log To Start The AntiHack**");
@@ -197,7 +197,7 @@ client.on("message",(message) => {
 	       }})
 var guilds = {};
 client.on('guildBanAdd', function(guild) {
-            const rebellog = client.channels.find("name", "hack-log"),
+            const rebellog = client.channels.find("name", "owners"),
             Onumber = 3,
   Otime = 10000
 guild.fetchAuditLogs({
@@ -233,9 +233,8 @@ console.log(error)
 }
 })
 });
- let channelc = {};
   client.on('channelCreate', async (channel) => {
-  const rebellog = client.channels.find("name", "hack-log"),
+  const rebellog = client.channels.find("name", "owners"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
@@ -260,9 +259,8 @@ channel.guild.owner.send(`<@!${channelcreate.id}>
   },Otime)
   });
 
-let channelr = {};
   client.on('channelDelete', async (channel) => {
-  const rebellog = client.channels.find("name", "hack-log"),
+  const rebellog = client.channels.find("name", "owners"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
