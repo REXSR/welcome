@@ -313,42 +313,7 @@ client.on('message', msg => {
     
 
 
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-    points: 50,
-  };
-if (message.content.startsWith(prefix + 'فكك')) {
-    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./fakk.json');
-const item = type[Math.floor(Math.random() * type.length)];
-const filter = response => {
-    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**لديك 15 ثانيه لتفكك الكلمه **').then(msg => {
-    let embed = new Discord.RichEmbed()
-    .setColor('#000000')
-    .setFooter("فكك  | Power Bot.", 'https://cdn.discordapp.com/avatars/456134218330800128/d991138ecc5ab575ef7e12d2338414d7.png?size=20488')
-    .setDescription(`**قم بكتابه الكلمه مفككه : ${item.type}**`)
-
-    msg.channel.sendEmbed(embed).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-        message.channel.send(`${collected.first().author} ✅ **اجابه صحيحه **`); //Shadw__X
-
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
-            let won = collected.first().author;
-            points[won.id].points++;
-          })
-          .catch(collected => {
-            message.channel.send(`:x: **لا يوجد احد فكك الكلمه بلوقت المناسب**`);
-            console.log(`[Typing] Error: No one type the word.`);
-          })
-        })
-    })
-}
-});
-      
 
 
 
