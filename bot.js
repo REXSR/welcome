@@ -189,7 +189,7 @@ client.on("guildMemberAdd", member => {
 client.on("message",(message) => {
     if(message.content.startsWith(prefix + "antihack")) {
         if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("** You Don't Have Permission `Manage channels` To Do This Command");
-        message.guild.createChannel("owners").then(c => {
+        message.guild.createChannel("log-power").then(c => {
             c.setPosition(1);
             temp[message.guild.id].channel = c.id
             message.channel.send("** Done I Created Channel Named hack-log To Start The AntiHack**");
@@ -197,7 +197,7 @@ client.on("message",(message) => {
 	       }})
 var guilds = {};
 client.on('guildBanAdd', function(guild) {
-            const rebellog = client.channels.find("name", "owners"),
+            const rebellog = client.channels.find("name", "log-power"),
             Onumber = 3,
   Otime = 10000
 guild.fetchAuditLogs({
@@ -234,7 +234,7 @@ console.log(error)
 })
 });
   client.on('channelCreate', async (channel) => {
-  const rebellog = client.channels.find("name", "owners"),
+  const rebellog = client.channels.find("name", "log-power"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
@@ -260,7 +260,7 @@ channel.guild.owner.send(`<@!${channelcreate.id}>
   });
 
   client.on('channelDelete', async (channel) => {
-  const rebellog = client.channels.find("name", "owners"),
+  const rebellog = client.channels.find("name", "log-power"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
@@ -295,7 +295,7 @@ client.on('message', msg => {
   let args = msg.content.split(" ").slice(1);
 
     if(command === "مسح") {
-        const emoji = client.emojis.find("name", "log-chat")
+        const emoji = client.emojis.find("name", "log-power")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
@@ -1152,20 +1152,6 @@ client.on('message',async message => {
 
 
 
-
-client.on("message", message => {
-
-            if (message.content.startsWith(prefix + "#obc")) {
-                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-  let args = message.content.split(" ").slice(1);
-  var argresult = args.join(' '); 
-  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
- m.send(`${argresult}\n ${m}`);
-})
- message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
- message.delete(); 
-};     
-});
 
 
     
