@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const moment = require('moment');
 const first = require('first');
+const fs = require('fs');
 const prefix = "";
 client.on('ready', () => {
 
